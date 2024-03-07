@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping ("/cancel/payment")
+@RequestMapping ("/payment")
 public class PaymentController {
 
 
-        @Autowired
-        private PaymentService paymentService;
-    }
+    @Autowired
+    private PaymentService paymentService;
+
     @PostMapping("/{paymentId}/cancel")
     public ResponseEntity<String> cancelPayment(@PathVariable Long paymentId) {
         Payment payment = PaymentService.getPaymentById(paymentId);
@@ -29,6 +29,9 @@ public class PaymentController {
         if (cancellationSuccess) {
             return new ResponseEntity<>("Payment cancelled successfully", HttpStatus.OK);
         } else {
+
             return new ResponseEntity<>("Payment cannot be cancelled at this time", HttpStatus.BAD_REQUEST);
         }
+
     }
+}

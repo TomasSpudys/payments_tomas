@@ -6,11 +6,22 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Path("/payments")
 public class PaymentService {
 
+    private static Map<Long, Payment> paymentMap = new HashMap<>();
+
+    public static Payment getPaymentById(Long paymentId) {
+        return paymentMap.get(paymentId);
+    }
+
+    public static boolean cancelPayment(Payment payment) {
+        return paymentMap.get(payment);
+    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
