@@ -25,8 +25,8 @@ public class PaymentController {
             return new ResponseEntity<>("Payment not found", HttpStatus.NOT_FOUND);
         }
 
-        boolean cancellationSuccess = PaymentService.cancelPayment(payment);
-        if (cancellationSuccess) {
+        Payment cancellationSuccess = PaymentService.cancelPayment(payment);
+        if (cancellationSuccess! =null) {
             return new ResponseEntity<>("Payment cancelled successfully", HttpStatus.OK);
         } else {
 

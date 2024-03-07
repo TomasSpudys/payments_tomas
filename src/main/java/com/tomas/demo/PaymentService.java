@@ -19,7 +19,7 @@ public class PaymentService {
         return paymentMap.get(paymentId);
     }
 
-    public static boolean cancelPayment(Payment payment) {
+    public static Payment cancelPayment(Payment payment) {
         return paymentMap.get(payment);
     }
 
